@@ -4,6 +4,11 @@ import "./App.css";
 
 
 
+interface SpinningReference {
+  interval: NodeJS.Timeout | null;
+  endTime: number | null;
+}
+
 interface Items { 
   color: string
   rating: number 
@@ -11,9 +16,9 @@ interface Items {
 const Roulette: FC<{time: number, items: Items[]}> = ({time, items}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
-  const spinningRef = useRef(null);
+  const spinningRef = useRef<SpinningReference>({ interval: null, endTime: null })
 
-  const spinRoulette = (duration) => {
+  const spinRoulette = (duration: number) => {
     setIsSpinning(true);
     
     const startTime = Date.now();
@@ -40,7 +45,7 @@ const Roulette: FC<{time: number, items: Items[]}> = ({time, items}) => {
   useEffect(() => {
     const checkDuration = () => {
       if (!isSpinning || !spinningRef.current) return;
-      if (Date.now() >= spinningRef.current.endTime) {
+      if (Date.now() >= spinningRef.current.endTime!) {
         clearInterval(spinningRef.current.interval);
         setIsSpinning(false);
       }
