@@ -1,5 +1,5 @@
-import './App.css'
-import Roulette from './Roulette'
+import '../src/Roulette/Roulette.scss'
+import Roulette from './Roulette/Roulette'
 
 function App() {
   const items = [
@@ -7,10 +7,28 @@ function App() {
     { color: "yellow", rating: 2 },
     { color: "green", rating: 3 },
     { color: "purple", rating: 1 },
+    
+    { color: "grey", rating: 3 },
+    { color: "blue", rating: 1 },
+    { color: "orange", rating: 3 },
+    { color: "blue", rating: 1 },
+    { color: "orange", rating: 3 },
+    { color: "blue", rating: 1 },
+    { color: "orange", rating: 3 },
+    { color: "blue", rating: 1 },
+    { color: "grey", rating: 3 },
+    { color: "blue", rating: 1 },
+    { color: "grey", rating: 3 },
+    { color: "blue", rating: 1 },
+    { color: "grey", rating: 3 },
+    { color: "blue", rating: 1 },
+    { color: "grey", rating: 3 },
+    { color: "blue", rating: 1 },
+    
   ];
   return (
-    <div className='App'>
-       <Roulette time={3000} items={items}  />
+    <div >
+       <Roulette time={1000} items={items}  />
     </div>
   )
 }
